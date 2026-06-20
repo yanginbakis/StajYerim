@@ -1,5 +1,5 @@
 {
-  "name": "Stajyerim",
+  "name": "StajYerim",
   "description": "Lise öğrencilerinin meslekleri erken yaşta 1 haftalık deneme stajlarıyla deneyimlemesini ve şirketlerin bu staj ilanlarını yönetmesini sağlayan akıllı platform.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]

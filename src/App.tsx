@@ -18,7 +18,7 @@ import Navbar from "./components/Navbar";
 import StudentDashboard from "./components/StudentDashboard";
 import CompanyDashboard from "./components/CompanyDashboard";
 import AICounselor from "./components/AICounselor";
-import TeamRolesSidebar from "./components/TeamRolesSidebar";
+import LeftSidebarFeatures from "./components/LeftSidebarFeatures";
 import { type Listing, type Application, type StudentProfile, type CompanyProfile } from "./types";
 import { seedListingsIfEmpty } from "./utils/seed";
 import { db, collection, getDocs, doc, deleteDoc } from "./lib/firebase";
@@ -141,7 +141,7 @@ export default function App() {
         {loading ? (
           <div className="flex flex-col items-center justify-center py-32 space-y-4">
             <Loader2 className="h-10 w-10 text-indigo-650 animate-spin" />
-            <p className="text-gray-500 font-semibold text-sm">Stajyerim Platformu Yükleniyor...</p>
+            <p className="text-gray-500 font-semibold text-sm">StajYerim Platformu Yükleniyor...</p>
           </div>
         ) : (
           <div className="space-y-8">
@@ -206,7 +206,7 @@ export default function App() {
             <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
               {/* Left Column - Sticky Team assignments sidebar */}
               <div className="md:col-span-1 lg:col-span-4 xl:col-span-3 md:sticky md:top-6">
-                <TeamRolesSidebar />
+                <LeftSidebarFeatures />
               </div>
 
               {/* Right Column - Main dashboard interactive routing */}
@@ -267,7 +267,7 @@ export default function App() {
       <footer className="bg-white border-t border-gray-150 py-8 mt-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center space-y-3">
           <p className="text-xs text-gray-400 font-semibold tracking-wide uppercase">
-            &copy; 2026 Stajyerim Kariyer ve Gelişim Platformu. Lise Öğrencileri İçin Özel Tasarlanmıştır.
+            &copy; 2026 StajYerim Kariyer ve Gelişim Platformu. Lise Öğrencileri İçin Özel Tasarlanmıştır.
           </p>
           <div className="flex justify-center gap-6 text-xs text-gray-450 font-medium">
             <span className="hover:text-indigo-600 cursor-pointer">Rehberlik Dokümanı</span>

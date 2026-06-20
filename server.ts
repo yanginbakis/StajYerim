@@ -30,14 +30,14 @@ app.post("/api/ai/counselor", async (req, res) => {
   
   if (!ai) {
     return res.json({
-      reply: "Merhaba! Şu an AI Servisi pasif durumda olduğu için demo modundayım. Stajyerim hakkında her türlü soruyu sorabilirsin! Örneğin, 'Yazılım Mühendisliği stajında ne yaparım?' gibi sorulara bu modda da yanıt verebilirim. Yazılım Mühendisliği 1 haftalık deneme stajları harika bir başlangıçtır!"
+      reply: "Merhaba! Şu an AI Servisi pasif durumda olduğu için demo modundayım. StajYerim hakkında her türlü soruyu sorabilirsin! Örneğin, 'Yazılım Mühendisliği stajında ne yaparım?' gibi sorulara bu modda da yanıt verebilirim. Yazılım Mühendisliği 1 haftalık deneme stajları harika bir başlangıçtır!"
     });
   }
 
   try {
     const interestStr = studentProfile ? `Öğrenci Profili / İlgi Alanları: ${studentProfile.interests}. Eğitim Durumu: Lise öğrencisi.` : "Kullanıcı: Lise öğrencisi.";
     
-    const prompt = `Sen "Stajyerim" platformunun resmi AI Kariyer Danışmanısın (Meslek Rehberi AI). Görevin, lise çağındaki öğrencilere kariyer rehberliği yapmak, meslekleri anlamalarına yardımcı olmak ve onlara uygun 1 haftalık deneme stajı alanlarını önermektir.
+    const prompt = `Sen "StajYerim" platformunun resmi AI Kariyer Danışmanısın (Meslek Rehberi AI). Görevin, lise çağındaki öğrencilere kariyer rehberliği yapmak, meslekleri anlamalarına yardımcı olmak ve onlara uygun 1 haftalık deneme stajı alanlarını önermektir.
 Açıklamalarını lise seviyesinde bir öğrencinin heyecan duyabileceği, anlaşılır, samimi, motive edici ama profesyonel bir dille yap. Aşırı resmi veya jargona boğulmuş bir dil kullanma. Bölümleri madde madde sun ve okuması kolay olsun.
 
 ${interestStr}
@@ -150,7 +150,7 @@ app.post("/api/ai/evaluate-answers", async (req, res) => {
   }
 
   try {
-    const prompt = `Sen "Stajyerim" platformunun lise öğrencilerini destekleyen AI Koçusun.
+    const prompt = `Sen "StajYerim" platformunun lise öğrencilerini destekleyen AI Koçusun.
 Lise öğrencisi bir aday, '${listingTitle}' başlıklı 1 haftalık deneme stajına başvurdu.
 Adayın ilgi alanları: ${studentInterests}
 

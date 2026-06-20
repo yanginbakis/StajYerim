@@ -37,7 +37,7 @@ export default function AICounselor({ studentProfile, setStudentProfile }: AICou
     {
       id: "initial-msg",
       sender: "ai",
-      text: `Merhaba **${studentProfile.name || "Geleceğin Yıldızı"}**! 🌟\n\nBen senin Dijital Kariyer Danışmanım. Lisedeyken hangi mesleğin sana en uygun olduğunu anlamak bazen zor olabilir. Bu yüzden **"Stajyerim"** platformunda 1 haftalık deneme stajları (tryout) yaparak meslekleri bizzat mutfağında tecrübe etmeni istiyoruz!\n\nKafandaki soruları bana sorabilirsin. Örneğin:\n- *Hangi meslek dallarında ne işler yapılır?*\n- *İlgi alanlarına en uygun 1 haftalık staj hangisi olabilir?*\n- *Deneme stajı mülakatına nasıl hazırlanmalısın?*\n\nSana özel tavsiyeler vermem için aşağıdaki ilgi alanı detaylarını doldurabilirsin ya da direkt sohbete başlayabiliriz!`,
+       text: `Merhaba **${studentProfile.name || "Geleceğin Yıldızı"}**! 🌟\n\nBen senin Dijital Kariyer Danışmanım. Lisedeyken hangi mesleğin sana en uygun olduğunu anlamak bazen zor olabilir. Bu yüzden **"StajYerim"** platformunda 1 haftalık deneme stajları (tryout) yaparak meslekleri bizzat mutfağında tecrübe etmeni istiyoruz!\n\nKafandaki soruları bana sorabilirsin. Örneğin:\n- *Hangi meslek dallarında ne işler yapılır?*\n- *İlgi alanlarına en uygun 1 haftalık staj hangisi olabilir?*\n- *Deneme stajı mülakatına nasıl hazırlanmalısın?*\n\nSana özel tavsiyeler vermem için aşağıdaki ilgi alanı detaylarını doldurabilirsin ya da direkt sohbete başlayabiliriz!`,
       timestamp: Date.now()
     }
   ]);
