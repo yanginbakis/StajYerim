@@ -1223,8 +1223,8 @@ export default function LeftSidebarFeatures() {
                     </button>
                   )}
                 </div>
-              </div>
 
+              </div>
             </div>
           )}
         </div>
@@ -1234,150 +1234,25 @@ export default function LeftSidebarFeatures() {
            ========================================== */}
         <div>
           <AccordionHeader 
-            title="Girişim Sunumu (Slaytlar)" 
+            title="Girişim Sunumu" 
             icon={TrendingUp} 
             isOpen={openSections.pitch_deck} 
             onClick={() => toggleSection("pitch_deck")}
-            badgeText={`${activeSlide + 1} / ${slides.length}`}
-            badgeColor="bg-sky-50 text-sky-700"
+            badgeText="Slaytlar"
+            badgeColor="bg-sky-50 text-indigo-700"
           />
-          {openSections.pitch_deck && (() => {
-            const currentSlide = slides[activeSlide] as any;
-            return (
-              <div className="p-4 bg-slate-50/50 space-y-3.5 animate-in fade-in-15">
-                <div className="flex justify-between items-center">
-                  <span className="text-[10px] text-gray-400 font-bold block uppercase tracking-wider">
-                    StajYerim Resmi Yatırımcı Sunumu
-                  </span>
-                  <button
-                    onClick={() => setShowFullscreenPresentation(true)}
-                    className="px-2.5 py-1 text-[10px] font-black uppercase tracking-wider bg-indigo-600 text-white rounded-lg hover:bg-indigo-755 transition flex items-center gap-1 shrink-0 cursor-pointer shadow-sm"
-                  >
-                    <Eye className="h-3 w-3" /> Sunumu Aç
-                  </button>
-                </div>
-
-                {/* Mini Slide Render Panel */}
-                <div className="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden shadow-md flex flex-col justify-between text-white select-none relative min-h-[190px]">
-                  {/* Visualizer header */}
-                  <div className="bg-slate-850 px-3 py-1.5 border-b border-slate-800 flex justify-between items-center text-[9px] font-mono text-slate-400">
-                    <span className="px-1.5 py-0.5 rounded bg-indigo-505/10 text-indigo-400 font-extrabold uppercase border border-indigo-400/10">
-                      Slayt {activeSlide + 1}: {currentSlide?.badge}
-                    </span>
-                    <span>Gamma Deck Player</span>
-                  </div>
-
-                  {/* Simulated slide display surface */}
-                  <div className="p-3.5 space-y-2 font-sans overflow-hidden">
-                    <h4 className="text-xs font-black tracking-tight text-white flex items-center gap-1">
-                      <span className="text-indigo-400">●</span> {currentSlide?.title}
-                    </h4>
-                    {currentSlide?.tagline && (
-                      <p className="text-[10px] text-indigo-250 italic font-semibold">{currentSlide?.tagline}</p>
-                    )}
-                    {currentSlide?.description && (
-                      <p className="text-[10px] text-slate-300 leading-relaxed font-medium">
-                        {currentSlide?.description}
-                      </p>
-                    )}
-
-                    {/* Tiny layout previews based on type */}
-                    {currentSlide?.visualType === "hero_illustration" && (
-                      <div className="flex flex-wrap gap-1 mt-1 pb-1">
-                        {currentSlide?.tags?.map((t: string, idx: number) => (
-                          <span key={idx} className="text-[8px] px-1.5 py-0.5 rounded-full bg-indigo-950 text-indigo-300 font-black border border-indigo-500/10 uppercase">
-                            {t}
-                          </span>
-                        ))}
-                      </div>
-                    )}
-
-                    {currentSlide?.points && (
-                      <div className="space-y-1 pt-1">
-                        {currentSlide.points.slice(0, 2).map((p: any, idx: number) => (
-                          <div key={idx} className="text-[9px] leading-snug bg-slate-850/40 p-1.5 rounded border border-slate-800/50">
-                            <strong className="text-indigo-300 font-extrabold">{p.title}:</strong>
-                            <span className="text-slate-350 ml-1 block">{p.text}</span>
-                          </div>
-                        ))}
-                      </div>
-                    )}
-
-                    {currentSlide?.steps && (
-                      <div className="grid grid-cols-4 gap-1.5 mt-2 bg-slate-950 p-1.5 rounded border border-slate-800">
-                        {currentSlide.steps.map((st: string, idx: number) => (
-                          <div key={idx} className="text-center rounded bg-slate-850 p-1 text-[8px] font-black border border-indigo-500/10">
-                            <div className="text-indigo-400 scale-90">0{idx + 1}</div>
-                            <div className="text-[7px] text-slate-300 font-bold truncate">{st}</div>
-                          </div>
-                        ))}
-                      </div>
-                    )}
-
-                    {currentSlide?.table && !currentSlide?.table.headers && (
-                      <div className="space-y-0.5 mt-1.5 bg-slate-950 p-1 rounded border border-slate-850">
-                        <div className="grid grid-cols-4 text-[7px] text-slate-400 font-bold border-b border-slate-800 pb-0.5 px-0.5">
-                          <span>Platform</span>
-                          <span>Kitle</span>
-                          <span>Özel</span>
-                          <span>TR</span>
-                        </div>
-                        {currentSlide.table.slice(0, 3).map((row: any, idx: number) => (
-                          <div key={idx} className={`grid grid-cols-4 text-[7px] px-0.5 py-0.5 font-semibold ${row.highlight ? "bg-indigo-950 text-indigo-200" : "text-slate-300"}`}>
-                            <span className="truncate">{row.name}</span>
-                            <span className="truncate">{row.audience}</span>
-                            <span>{row.privateSector}</span>
-                            <span>{row.turkey}</span>
-                          </div>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-
-                  {/* Progress dot strip / controls footer */}
-                  <div className="bg-slate-950 px-3 py-2 border-t border-slate-800 flex justify-between items-center text-[10px] font-bold">
-                    {/* Miniature index dots */}
-                    <div className="flex gap-1">
-                      {slides.map((_, i) => (
-                        <button
-                          key={i}
-                          onClick={() => setActiveSlide(i)}
-                          className={`h-1.5 w-1.5 rounded-full transition-all ${
-                            activeSlide === i ? "bg-indigo-505 w-3 bg-indigo-500" : "bg-slate-705 bg-slate-700 hover:bg-slate-500"
-                          }`}
-                        />
-                      ))}
-                    </div>
-
-                    <div className="flex items-center gap-1.5">
-                      <button
-                        disabled={activeSlide === 0}
-                        onClick={() => setActiveSlide(prev => prev - 1)}
-                        className="p-1 px-2.5 rounded-md bg-slate-800/80 hover:bg-slate-700/80 text-white transition disabled:opacity-30 text-[9px]"
-                      >
-                        Geri
-                      </button>
-                      <button
-                        disabled={activeSlide === slides.length - 1}
-                        onClick={() => setActiveSlide(prev => prev + 1)}
-                        className="p-1 px-2.5 rounded-md bg-indigo-600 hover:bg-indigo-500 text-white transition disabled:opacity-30 text-[9px]"
-                      >
-                        İleri
-                      </button>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Big CTA for slide modal */}
-                <button
-                  onClick={() => setShowFullscreenPresentation(true)}
-                  className="w-full py-2.5 rounded-xl border-2 border-dashed border-indigo-200 hover:border-indigo-400 bg-white hover:bg-indigo-50/20 text-indigo-650 transition font-extrabold text-[11px] flex items-center justify-center gap-1.5 cursor-pointer"
-                >
-                  <span>🖥️ SUNUM DECK'İNİ TAM EKRAN AÇ VE SUN</span>
-                </button>
-              </div>
-            );
-          })()}
+          {openSections.pitch_deck && (
+            <div className="p-4 bg-slate-50/50 animate-in fade-in-15">
+              <a
+                href="https://mail.google.com/mail/u/0?ui=2&ik=5420772467&attid=0.1&permmsgid=msg-f:1868522337230796735&th=19ee532a758637bf&view=att&disp=inline&realattid=f_mqme3a000&zw"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full py-3 px-4 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white transition font-black text-xs flex items-center justify-center gap-2 shadow-md shadow-indigo-650/15 cursor-pointer text-center"
+              >
+                <span>🖥️ GİRİŞİM SUNUMUNU AÇ (PITCH DECK)</span>
+              </a>
+            </div>
+          )}
         </div>
 
         {/* ==========================================
