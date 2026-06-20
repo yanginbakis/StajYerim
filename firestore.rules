@@ -1,0 +1,52 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Helper functions for validating document ID and text sizes
+    function isValidId(id) { 
+      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$'); 
+    }
+
+    function incoming() { 
+      return request.resource.data; 
+    }
+
+    // Default deny catch-all
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Rules for listings
+    match /listings/{listingId} {
+      allow read: if true;
+      allow create, update, delete: if isValidId(listingId);
+    }
+
+    // Rules for applications
+    match /applications/{applicationId} {
+      allow read: if true;
+      allow create, update, delete: if isValidId(applicationId);
+    }
+
+    // Rules for team roles
+    match /team_roles/{roleId} {
+      allow read: if true;
+      
+      // Enforce validation helper function
+      allow create, update: if isValidId(roleId) && isValidTeamRole(incoming());
+      allow delete: if isValidId(roleId);
+    }
+
+    // Standalone Validation Blueprints - prevent shadow/ghost fields and ensure correct types
+    function isValidTeamRole(data) {
+      return data.keys().hasAll(['id', 'roleName', 'assignedName', 'status', 'updatedAt'])
+        && data.keys().size() <= 8
+        && data.id is string && data.id.size() <= 100
+        && data.roleName is string && data.roleName.size() <= 120
+        && data.assignedName is string && data.assignedName.size() <= 150
+        && data.status is string && (data.status == 'active' || data.status == 'support' || data.status == 'none')
+        && data.updatedAt is int;
+    }
+
+  }
+}

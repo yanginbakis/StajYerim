@@ -1,0 +1,71 @@
+{
+  "entities": {
+    "Listing": {
+      "title": "Listing",
+      "description": "Staj ilan detayları",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "companyName": { "type": "string" },
+        "category": { "type": "string" },
+        "description": { "type": "string" },
+        "weeksPlan": { "type": "array" },
+        "locationType": { "type": "string" },
+        "locationCity": { "type": "string" },
+        "quizQuestions": { "type": "array" },
+        "createdAt": { "type": "number" }
+      },
+      "required": ["id", "title", "companyName", "category", "description", "createdAt"]
+    },
+    "Application": {
+      "title": "Application",
+      "description": "Öğrenci staj başvuru detayları",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "listingId": { "type": "string" },
+        "listingTitle": { "type": "string" },
+        "companyName": { "type": "string" },
+        "studentName": { "type": "string" },
+        "studentEmail": { "type": "string" },
+        "studentInterests": { "type": "string" },
+        "answers": { "type": "array" },
+        "status": { "type": "string" },
+        "evalFeedback": { "type": "string" },
+        "createdAt": { "type": "number" }
+      },
+      "required": ["id", "listingId", "studentName", "studentEmail", "status", "createdAt"]
+    },
+    "TeamRole": {
+      "title": "TeamRole",
+      "description": "Ekipler arası startup rol görevlisi bilgileri",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "roleName": { "type": "string" },
+        "assignedName": { "type": "string" },
+        "assignedEmail": { "type": "string" },
+        "assignedGrade": { "type": "string" },
+        "notes": { "type": "string" },
+        "status": { "type": "string" },
+        "updatedAt": { "type": "number" }
+      },
+      "required": ["id", "roleName", "assignedName", "status", "updatedAt"]
+    }
+  },
+  "firestore": {
+    "/listings/{listingId}": {
+      "schema": "Listing",
+      "description": "Firmalar tarafından eklenen mesleki gözlem ve staj ilanları."
+    },
+    "/applications/{applicationId}": {
+      "schema": "Application",
+      "description": "Lise öğrencilerinin ilanlara sunduğu başvuruları ve değerlendirme sonuçları."
+    },
+    "/team_roles/{roleId}": {
+      "schema": "TeamRole",
+      "description": "Startup rol tanımları ve assigned görevlileri listesi."
+    }
+  }
+}
